@@ -2,42 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ayman's Personal Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUC-CPS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .tab-pane {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        .university-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .university-logo {
+            width: 150px;
+            margin-right: 10px;
+        }
+        .lab-info {
+            text-align: right;
+        }
+        .nav-tabs {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: orange;
+            color: white;
+        }
+        .nav-tabs .nav-link {
+            color: #000;
+        }
+        .nav-tabs .nav-link:hover {
+            color: #000;
+        }
+    </style>
 </head>
 <body>
-<table cellspacing="20">
-    <tr>
-        <td><img src="images/Ayman_El-Badawy_Small.jpeg" alt="Ayman El-Badawy profile picture" width="180" height="180"></td>
-        <td><h1>Ayman A. El-Badawy</h1>
-            <p><em>Professor</em>
-                <br>
-                <em>Department of Mechatronics Engineering</em>
-                <br>
-                <em>Faculty of Engineering and Materials Science</em>
-                <br>
-                <em><strong><a href = "https://www.guc.edu.eg">German University in Cairo</a></strong></em></p></td>
-    </tr>
-</table>
 
+<div class="container mt-5">
+    <!-- University Header -->
+    <div class="university-header">
+        <a href="https://www.guc.edu.eg/" target="_blank">
+            <img src="images/German_University_in_Cairo_Logo.jpg" alt="GUC Logo" class="university-logo">
+        </a>
+        <div class="lab-info">
+            <span>Cyber-Physical Systems (CPS) Lab</span><br>
+            <span>Faculty of Engineering and Material Sciences (EMS)</span>
+        </div>
+    </div>
+    
+    <!-- Tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="people-tab" data-toggle="tab" href="#people" role="tab" aria-controls="people" aria-selected="false">People</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="software-tab" data-toggle="tab" href="#software" role="tab" aria-controls="software" aria-selected="false">Software</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">Projects</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="publications-tab" data-toggle="tab" href="#publications" role="tab" aria-controls="publications" aria-selected="false">Publications</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="teaching-tab" data-toggle="tab" href="#teaching" role="tab" aria-controls="teaching" aria-selected="false">Teaching</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">Events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="job-offers-tab" data-toggle="tab" href="#job-offers" role="tab" aria-controls="job-offers" aria-selected="false">Job Offers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Content for Home</div>
+        <div class="tab-pane fade" id="people" role="tabpanel" aria-labelledby="people-tab">Content for People</div>
+        <div class="tab-pane fade" id="software" role="tabpanel" aria-labelledby="software-tab">Content for Software</div>
+        <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">Content for Projects</div>
+        <div class="tab-pane fade" id="publications" role="tabpanel" aria-labelledby="publications-tab">Content for Publications</div>
+        <div class="tab-pane fade" id="teaching" role="tabpanel" aria-labelledby="teaching-tab">Content for Teaching</div>
+        <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">Content for Events</div>
+        <div class="tab-pane fade" id="job-offers" role="tabpanel" aria-labelledby="job-offers-tab">Content for Job Offers</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Content for Contact</div>
+    </div>
+</div>
 
-<hr>
-<h3>Education</h3>
-    <ul>
-        <li> B.Sc. Mechanical Engineering,<a href = "https://www.aucegypt.edu"> American University in Cairo</a>, 1993</li>
-        <li> M.Sc. Mechanical Engineering, <a href = "https://www.aucegypt.edu"> American University in Cairo</a>, 1995</li>
-        <li> Ph.D. Mechanical Engineering, <a href = "https://www.vt.edu"> Virginia Tech</a>, 2000</li>
-    </ul>
-<hr>
-<h3>Teaching</h3>
-    <ul>
-        <li> Control Engineering </li>
-        <li> Mechatronics Engineering (Embedded Control Systems) </li>
-        <li> Advanced Mechatronics Engineering (Hybrid Dynamical Systems) </li>
-        <li> Reinforcement Learning and Optimal Control </li>
-    </ul>
-<hr>
-<a href="https://scholar.google.com/citations?user=MzV2HwMAAAAJ&hl=en"> Google Scholar </a>
-<!-- <h3><a href="research.html">Research</a></h3>  -->
-<! -- email address and other info  -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
