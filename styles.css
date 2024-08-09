@@ -1,0 +1,92 @@
+/* General Styles */
+.university-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.university-logo {
+    width: 150px;
+    margin-right: 10px;
+}
+
+.lab-info {
+    text-align: right;
+}
+
+.nav-tabs {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: orange;
+    color: white;
+}
+
+.nav-tabs .nav-link {
+    color: #000;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #000;
+}
+
+.home-content {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    font-size: 18px; /* Adjust the size as needed */
+    line-height: 1.6; /* Improves readability */
+}
+
+/* Carousel Styles */
+.carousel-item {
+    height: 500px;
+    background-color: #777;
+    color: white;
+    text-align: center;
+}
+
+.carousel-item img {
+    height: 100%;
+    object-fit: contain;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.card {
+    margin-bottom: 20px;
+    border: none; /* Remove default border */
+    /*box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); */ /* Add a subtle shadow */
+    width: 100%; /* Adjust the width as needed */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-img-top {
+    border-radius: 5px; /* Rounded corners for the image */
+    height: 300px;
+    object-fit: contain;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555; /* Lighter color for the text */
+    text-align: center;
+}
