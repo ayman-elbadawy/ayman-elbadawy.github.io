@@ -43,14 +43,16 @@
 
 /* Carousel Styles */
 .carousel-item {
-    height: 500px;
+    height: 535px;
     background-color: #777;
     color: white;
     text-align: center;
 }
 
-.carousel-item img {
-    height: 100%;
+.carousel-item img,
+.carousel-item video {
+    max-height: 100%;
+    max-width: 100%;
     object-fit: contain;
 }
 
@@ -59,7 +61,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 10px 20px;
     text-align: center;
 }
