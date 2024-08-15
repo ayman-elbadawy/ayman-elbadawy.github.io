@@ -92,5 +92,13 @@
     color: #555; /* Lighter color for the text */
     text-align: center;
 }
+.publications-heading {
+    font-size: 32px;
+}
+
+.publications-text {
+    font-size: 20px;
+}
+
 
 
