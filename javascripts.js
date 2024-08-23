@@ -41,52 +41,66 @@ window.addEventListener("load", function() {
     document.getElementById("spinner").style.display = "none";
 });
 
+
 document.addEventListener("DOMContentLoaded", function() {
     // Handle citation button click
     document.querySelectorAll('.cite-button').forEach(button => {
         button.addEventListener('click', function() {
+            console.log("CITE button clicked"); // Debugging line
+
             // Retrieve citation data
             const title = this.getAttribute('data-title');
-            const bibtex = this.getAttribute('data-bibtex');
-            const plainText = this.getAttribute('data-plaintext');
+            const bibtexUrl = this.getAttribute('data-bibtex-url');
+            const plainTextUrl = this.getAttribute('data-plaintext-url');
 
-            // Update modal content to default to BibTeX
-            const citationContent = `
-                <h5>${title}</h5>
-                <textarea rows="10" style="width: 100%;" readonly>${bibtex}</textarea>
-            `;
-            document.getElementById('citationContent').innerHTML = citationContent;
-            document.getElementById('downloadBibtex').style.display = 'block';
-            document.getElementById('downloadPlainText').style.display = 'none';
+            // Fetch BibTeX content
+            fetch(bibtexUrl)
+                .then(response => response.text())
+                .then(bibtex => {
+                    console.log("BibTeX fetched"); // Debugging line
+                    const citationContent = `
+                        <h5>${title}</h5>
+                        <textarea rows="10" style="width: 100%;" readonly>${bibtex}</textarea>
+                    `;
+                    document.getElementById('citationContent').innerHTML = citationContent;
+                    document.getElementById('downloadBibtex').style.display = 'block';
+                    document.getElementById('downloadPlainText').style.display = 'none';
 
-            // Set citation format buttons
-            document.getElementById('bibtexButton').onclick = function() {
-                document.getElementById('citationContent').innerHTML = `
-                    <h5>${title}</h5>
-                    <textarea rows="10" style="width: 100%;" readonly>${bibtex}</textarea>
-                `;
-                document.getElementById('downloadBibtex').style.display = 'block';
-                document.getElementById('downloadPlainText').style.display = 'none';
-            };
+                    // Set citation format buttons
+                    document.getElementById('bibtexButton').onclick = function() {
+                        document.getElementById('citationContent').innerHTML = `
+                            <h5>${title}</h5>
+                            <textarea rows="10" style="width: 100%;" readonly>${bibtex}</textarea>
+                        `;
+                        document.getElementById('downloadBibtex').style.display = 'block';
+                        document.getElementById('downloadPlainText').style.display = 'none';
+                    };
 
-            document.getElementById('plainTextButton').onclick = function() {
-                document.getElementById('citationContent').innerHTML = `
-                    <h5>${title}</h5>
-                    <textarea rows="10" style="width: 100%;" readonly>${plainText}</textarea>
-                `;
-                document.getElementById('downloadBibtex').style.display = 'none';
-                document.getElementById('downloadPlainText').style.display = 'block';
-            };
+                    document.getElementById('plainTextButton').onclick = function() {
+                        fetch(plainTextUrl)
+                            .then(response => response.text())
+                            .then(plainText => {
+                                document.getElementById('citationContent').innerHTML = `
+                                    <h5>${title}</h5>
+                                    <textarea rows="10" style="width: 100%;" readonly>${plainText}</textarea>
+                                `;
+                                document.getElementById('downloadBibtex').style.display = 'none';
+                                document.getElementById('downloadPlainText').style.display = 'block';
+                            })
+                            .catch(error => console.error("Error fetching plain text:", error));
+                    };
 
-            // Show modal
-            $('#citationModal').modal('show');
+                    // Show modal
+                    $('#citationModal').modal('show');
+                })
+                .catch(error => console.error("Error fetching BibTeX:", error));
         });
     });
 
     // Handle download button clicks
     document.getElementById('downloadBibtex').addEventListener('click', function() {
-        const bibtex = document.querySelector('.cite-button').getAttribute('data-bibtex');
-        const blob = new Blob([bibtex], {type: 'text/plain'});
+        const bibtexContent = document.querySelector('#citationContent textarea').value;
+        const blob = new Blob([bibtexContent], {type: 'text/plain'});
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -97,8 +111,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.getElementById('downloadPlainText').addEventListener('click', function() {
-        const plainText = document.querySelector('.cite-button').getAttribute('data-plaintext');
-        const blob = new Blob([plainText], {type: 'text/plain'});
+        const plainTextContent = document.querySelector('#citationContent textarea').value;
+        const blob = new Blob([plainTextContent], {type: 'text/plain'});
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -108,6 +122,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.removeChild(a);
     });
 });
+
+
 
 
 
