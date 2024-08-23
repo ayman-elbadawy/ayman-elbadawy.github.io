@@ -53,19 +53,84 @@
 
         <!-- Content for Publications Tab -->
         <div class="tab-content mt-3">
-            <h3 class="publications-heading">Publications</h3> <!-- Apply a class to the heading -->
-                <div class="d-flex align-items-center mt-4">
-                    <p class="publications-text mr-2 mb-0">For a complete list of publications, please visit Prof. Dr. Ayman Elbadawy's </p>                    <a href="https://scholar.google.com/citations?user=MzV2HwMAAAAJ&hl=en" target="_blank">
-                    <img alt="Google Scholar" src="images/Google_Scholar_logo.gif" class="img-fluid" style="height: 40px;">
-                    </a>
-                    <p class="publications-text ml-2 mb-0">profile.</p>
-                </div>
-        </div>
+            <h3 class="publications-heading">Publications</h3>
 
+            <!-- Publications List -->
+            <div class="publications-list mt-4">
+                    
+                <div class="publication-item d-flex justify-content-between mb-3">
+                    <div class="publication-details">
+                        <h5 class="publication-title">Active anti-disturbance control of a quadrotor unmanned
+                            aerial vehicle using the command-filtering backstepping
+                            approach</h5>
+                        <p class="publication-authors">A Aboudonia, A El-Badawy, R Rashad</p>
+                        <p class="publication-journal">Nonlinear Dynamics 90 (1), 581-597</p>
+                    </div>
+                    
+                    <div class="publication-links ml-3 d-flex flex-column align-items-center">
+                        <a href="Publications/aboudonia2017.pdf" target="_blank" class="btn btn-primary btn-lg mb-2">PDF</a>
+                        <button class="btn btn-secondary btn-lg cite-button" 
+                                data-title="Active anti-disturbance control of a quadrotor unmanned aerial vehicle using the command-filtering backstepping approach"
+                                data-authors="A Aboudonia, A El-Badawy, R Rashad"
+                                data-journal="Nonlinear Dynamics 90 (1), 581-597"
+                                data-bibtex="@article{aboudonia2017active, title={Active anti-disturbance control of a quadrotor unmanned aerial vehicle using the command-filtering backstepping approach},
+  author={Aboudonia, Ahmed and El-Badawy, Ayman and Rashad, Ramy},
+  journal={Nonlinear Dynamics},
+  volume={90},
+  number={1},
+  pages={581--597},
+  year={2017},
+  publisher={Springer}
+}"
+                                data-plaintext="A Aboudonia, A El-Badawy, R Rashad. Active anti-disturbance control of a quadrotor unmanned aerial vehicle using the command-filtering backstepping approach. Nonlinear Dynamics 90 (1), 581-597, 2017.">
+                            CITE
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Add more publication items as needed -->
+                <!-- Repeat the block above for each publication -->
+            </div>
+        </div>
     </div>
+
+    <!-- Citation Modal -->
+    <div id="citationModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Citation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Title of the publication -->
+                    <div id="citationContent">
+                        <!-- Citation content will be dynamically inserted here -->
+                    </div>
+                    <!-- Buttons for citation format -->
+                    <div class="citation-options mt-3">
+                        <button id="bibtexButton" class="btn btn-info">BibTeX</button>
+                        <button id="plainTextButton" class="btn btn-info">Plain Text</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- Download buttons -->
+                    <button id="downloadBibtex" class="btn btn-info" style="display:none;">Download BibTeX</button>
+                    <button id="downloadPlainText" class="btn btn-info" style="display:none;">Download Plain Text</button>
+                    <!-- Close button -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="javascripts.js"></script>
 </body>
 </html>

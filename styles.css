@@ -27,11 +27,13 @@
 
 .nav-tabs .nav-link {
     color: #000;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .nav-tabs .nav-link:hover {
-    color: #000;
+    color: #000; /* Keep the color unchanged */
 }
+
 
 .home-content {
     padding: 20px;
@@ -43,7 +45,7 @@
 
 /* Carousel Styles */
 .carousel-item {
-    height: 535px;
+    height: 500px;
     background-color: #777;
     color: white;
     text-align: center;
@@ -92,12 +94,91 @@
     color: #555; /* Lighter color for the text */
     text-align: center;
 }
+
 .publications-heading {
-    font-size: 32px;
+    font-size: 2rem;
 }
 
 .publications-text {
-    font-size: 20px;
+    font-size: 1rem;
+}
+
+.publication-item {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.publication-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.publication-authors {
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.publication-journal {
+    font-size: 0.875rem;
+    color: #777;
+}
+
+.publication-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.publication-links .btn {
+    font-size: 1rem; /* Increase font size for larger text */
+    padding: 10px 20px; /* Increase padding for larger button size */
+}
+
+.publication-links .btn-lg {
+    font-size: 1.25rem; /* Larger font size for larger buttons */
+    padding: 10px 20px; /* Larger padding for buttons */
+}
+
+/* Citation Modal */
+.modal-dialog {
+    max-width: 600px;
+    margin: 1.75rem auto;
+}
+
+.citation-options {
+    display: flex;
+    justify-content: space-around;
+}
+
+.citation-options .btn {
+    margin: 0 10px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+#topBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Place the button at the bottom */
+    right: 20px; /* Place the button 20px from the right */
+    z-index: 99; /* Make sure it does not overlap with other content */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: orange; /* background */
+    color: white; /* White text */
+    cursor: pointer; /* Pointer/hand icon */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+}
+
+#topBtn:hover {
+    background-color: #555; /* Darker background on hover */
 }
 
 
