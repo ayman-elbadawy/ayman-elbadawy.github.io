@@ -43,21 +43,27 @@ window.addEventListener("load", function() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    let currentBibtexContent = "";
+    let currentPlainTextContent = "";
+    let currentBibtexUrl = "";
+    let currentPlainTextUrl = "";
+
     // Handle citation button click
     document.querySelectorAll('.cite-button').forEach(button => {
         button.addEventListener('click', function() {
-            console.log("CITE button clicked"); // Debugging line
-
             // Retrieve citation data
             const title = this.getAttribute('data-title');
             const bibtexUrl = this.getAttribute('data-bibtex-url');
             const plainTextUrl = this.getAttribute('data-plaintext-url');
 
-            // Fetch BibTeX content
+            currentBibtexUrl = bibtexUrl;
+            currentPlainTextUrl = plainTextUrl;
+
+            // Fetch BibTeX content and update modal
             fetch(bibtexUrl)
                 .then(response => response.text())
                 .then(bibtex => {
-                    console.log("BibTeX fetched"); // Debugging line
+                    currentBibtexContent = bibtex;  // Store BibTeX content
                     const citationContent = `
                         <h5>${title}</h5>
                         <textarea rows="10" style="width: 100%;" readonly>${bibtex}</textarea>
@@ -65,63 +71,65 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.getElementById('citationContent').innerHTML = citationContent;
                     document.getElementById('downloadBibtex').style.display = 'block';
                     document.getElementById('downloadPlainText').style.display = 'none';
+                })
+                .catch(error => {
+                    console.error("Error fetching BibTeX:", error);
+                });
 
-                    // Set citation format buttons
-                    document.getElementById('bibtexButton').onclick = function() {
+            // Fetch Plain Text content and store it for later use
+            fetch(plainTextUrl)
+                .then(response => response.text())
+                .then(plainText => {
+                    currentPlainTextContent = plainText;  // Store Plain Text content
+                    document.getElementById('plainTextButton').onclick = function() {
                         document.getElementById('citationContent').innerHTML = `
                             <h5>${title}</h5>
-                            <textarea rows="10" style="width: 100%;" readonly>${bibtex}</textarea>
+                            <textarea rows="10" style="width: 100%;" readonly>${plainText}</textarea>
                         `;
-                        document.getElementById('downloadBibtex').style.display = 'block';
-                        document.getElementById('downloadPlainText').style.display = 'none';
+                        document.getElementById('downloadBibtex').style.display = 'none';
+                        document.getElementById('downloadPlainText').style.display = 'block';
                     };
-
-                    document.getElementById('plainTextButton').onclick = function() {
-                        fetch(plainTextUrl)
-                            .then(response => response.text())
-                            .then(plainText => {
-                                document.getElementById('citationContent').innerHTML = `
-                                    <h5>${title}</h5>
-                                    <textarea rows="10" style="width: 100%;" readonly>${plainText}</textarea>
-                                `;
-                                document.getElementById('downloadBibtex').style.display = 'none';
-                                document.getElementById('downloadPlainText').style.display = 'block';
-                            })
-                            .catch(error => console.error("Error fetching plain text:", error));
-                    };
-
-                    // Show modal
-                    $('#citationModal').modal('show');
                 })
-                .catch(error => console.error("Error fetching BibTeX:", error));
+                .catch(error => {
+                    console.error("Error fetching Plain Text:", error);
+                });
+
+            // Update the BibTeX button functionality
+            document.getElementById('bibtexButton').onclick = function() {
+                document.getElementById('citationContent').innerHTML = `
+                    <h5>${title}</h5>
+                    <textarea rows="10" style="width: 100%;" readonly>${currentBibtexContent}</textarea>
+                `;
+                document.getElementById('downloadBibtex').style.display = 'block';
+                document.getElementById('downloadPlainText').style.display = 'none';
+            };
+
+            // Show modal
+            $('#citationModal').modal('show');
         });
     });
 
     // Handle download button clicks
     document.getElementById('downloadBibtex').addEventListener('click', function() {
-        const bibtexContent = document.querySelector('#citationContent textarea').value;
-        const blob = new Blob([bibtexContent], {type: 'text/plain'});
-        const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = url;
-        a.download = 'citation.bib';
+        a.href = currentBibtexUrl;
+        a.download = currentBibtexUrl.split('/').pop();
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
     });
 
     document.getElementById('downloadPlainText').addEventListener('click', function() {
-        const plainTextContent = document.querySelector('#citationContent textarea').value;
-        const blob = new Blob([plainTextContent], {type: 'text/plain'});
-        const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = url;
-        a.download = 'citation.txt';
+        a.href = currentPlainTextUrl;
+        a.download = currentPlainTextUrl.split('/').pop();
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
     });
 });
+
+
 
 
 
