@@ -150,22 +150,45 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.getElementById('searchInput').addEventListener('keyup', function() {
-    console.log('Keyup event detected');
-    const query = this.value.toLowerCase();
+
+//Search bar
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM fully loaded and parsed');
+
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) {
+        console.error('Search input not found');
+        return;
+    }
+
     const publicationItems = document.querySelectorAll('.publication-item');
+    console.log(`Found ${publicationItems.length} publication items`);
 
-    publicationItems.forEach(function(item) {
-        const title = item.querySelector('.publication-title').textContent.toLowerCase();
-        const authors = item.querySelector('.publication-authors').textContent.toLowerCase();
+    searchInput.addEventListener('input', function () {
+        const query = searchInput.value.toLowerCase().trim();
+        console.log('Typing: ', query);
 
-        if (title.includes(query) || authors.includes(query)) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
-        }
+        publicationItems.forEach(function (item) {
+            const titleElement = item.querySelector('.publication-title');
+            const authorsElement = item.querySelector('.publication-authors');
+
+            if (titleElement && authorsElement) {
+                const title = titleElement.textContent.toLowerCase();
+                const authors = authorsElement.textContent.toLowerCase();
+
+                const matchesQuery = title.includes(query) || authors.includes(query);
+                item.style.display = matchesQuery ? 'flex' : 'none'; // Use 'flex' to override d-flex
+                console.log(`Publication: ${title} - ${matchesQuery ? 'Visible' : 'Hidden'}`);
+            } else {
+                console.error('Title or authors element not found in publication item.');
+            }
+        });
     });
 });
+
+
+
+
 
 
 
