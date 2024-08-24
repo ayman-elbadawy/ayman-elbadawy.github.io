@@ -123,21 +123,50 @@
     color: #777;
 }
 
-.publication-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    /* Updated button styles */
+    .publication-links .btn-primary {
+        background-color: orange;
+        border-color: orange;
+        color: white;
+    }
 
-.publication-links .btn {
-    font-size: 1rem; /* Increase font size for larger text */
-    padding: 10px 20px; /* Increase padding for larger button size */
-}
+    .publication-links .btn-primary:hover {
+        background-color: #e69500;
+        border-color: #e69500;
+    }
 
-.publication-links .btn-lg {
-    font-size: 1.25rem; /* Larger font size for larger buttons */
-    padding: 10px 20px; /* Larger padding for buttons */
-}
+    .publication-links .btn-secondary {
+        background-color: #555;
+        border-color: #555;
+        color: white;
+    }
+
+    .publication-links .btn-secondary:hover {
+        background-color: #333;
+        border-color: #333;
+    }
+
+    .citation-options .btn-info {
+        background-color: orange;
+        border-color: orange;
+        color: white;
+    }
+
+    .citation-options .btn-info:hover {
+        background-color: #e69500;
+        border-color: #e69500;
+    }
+
+    #downloadBibtex, #downloadPlainText {
+        background-color: orange;
+        border-color: orange;
+        color: white;
+    }
+
+    #downloadBibtex:hover, #downloadPlainText:hover {
+        background-color: #e69500;
+        border-color: #e69500;
+    }
 
 /* Citation Modal */
 .modal-dialog {

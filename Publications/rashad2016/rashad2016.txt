@@ -1,0 +1,1 @@
+Rashad, R., Aboudonia, A., & El-Badawy, A. (2016). A novel disturbance observer-based backstepping controller with command filtered compensation for a MIMO system. Journal of the Franklin Institute, 353(16), 4039-4061.

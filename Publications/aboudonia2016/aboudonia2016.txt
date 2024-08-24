@@ -1,0 +1,1 @@
+Aboudonia, A., El-Badawy, A., & Rashad, R. (2016). Disturbance observer-based feedback linearization control of an unmanned quadrotor helicopter. Proceedings of the Institution of Mechanical Engineers, Part I: Journal of Systems and Control Engineering, 230(9), 877-891.

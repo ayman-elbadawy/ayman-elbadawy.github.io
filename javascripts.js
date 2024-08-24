@@ -36,6 +36,27 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+
+// Hover for buttons
+document.addEventListener("DOMContentLoaded", function() {
+    // Select all buttons within the publication-links div
+    const buttons = document.querySelectorAll('.publication-links .btn');
+
+    // Add event listeners for mouseenter and mouseleave
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.3)';
+            this.style.transform = 'scale(1.2)';
+        });
+
+        button.addEventListener('mouseleave', function() {
+            this.style.boxShadow = 'none';
+            this.style.transform = 'scale(1)';
+        });
+    });
+});
+
+
 //Loading Spinner
 window.addEventListener("load", function() {
     document.getElementById("spinner").style.display = "none";
@@ -128,6 +149,25 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.removeChild(a);
     });
 });
+
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    console.log('Keyup event detected');
+    const query = this.value.toLowerCase();
+    const publicationItems = document.querySelectorAll('.publication-item');
+
+    publicationItems.forEach(function(item) {
+        const title = item.querySelector('.publication-title').textContent.toLowerCase();
+        const authors = item.querySelector('.publication-authors').textContent.toLowerCase();
+
+        if (title.includes(query) || authors.includes(query)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+
+
 
 
 

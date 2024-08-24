@@ -1,1 +1,0 @@
-Aboudonia, A., El-Badawy, A., & Rashad, R. (2017). Active anti-disturbance control of a quadrotor unmanned aerial vehicle using the command-filtering backstepping approach. Nonlinear Dynamics, 90(1), 581-597.

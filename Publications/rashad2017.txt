@@ -1,1 +1,0 @@
-Rashad, R., El-Badawy, A., & Aboudonia, A. (2017). Sliding mode disturbance observer-based control of a twin rotor MIMO system. ISA transactions, 69, 166-174.
