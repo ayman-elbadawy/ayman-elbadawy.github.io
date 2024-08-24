@@ -1,0 +1,1 @@
+Wissa, B. E., Elshafei, K. O., & El-Badawy, A. A. (2020). Lyapunov-based control and trajectory tracking of a 6-DOF flapping wing micro aerial vehicle. Nonlinear Dynamics, 99(4), 2919-2938.

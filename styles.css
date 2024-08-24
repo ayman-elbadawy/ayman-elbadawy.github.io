@@ -49,6 +49,7 @@
     background-color: #777;
     color: white;
     text-align: center;
+    position: relative;
 }
 
 .carousel-item img,
@@ -56,6 +57,7 @@
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
+    display: block;
 }
 
 .carousel-caption {
