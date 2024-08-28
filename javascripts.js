@@ -63,6 +63,8 @@ window.addEventListener("load", function() {
 });
 
 
+//Publications Pop-up
+
 document.addEventListener("DOMContentLoaded", function() {
     let currentBibtexContent = "";
     let currentPlainTextContent = "";
@@ -184,6 +186,42 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+});
+
+
+//carousel sliding automatically
+document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.getElementById('carouselExampleCaptions');
+    const carouselItems = carousel.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+    let slideInterval;
+
+    // Function to go to the next slide
+    function goToNextSlide() {
+        carouselItems[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % carouselItems.length;
+        carouselItems[currentIndex].classList.add('active');
+        setSlideInterval();
+    }
+
+    // Function to set interval based on content type
+    function setSlideInterval() {
+        clearInterval(slideInterval);
+
+        const currentSlide = carouselItems[currentIndex];
+        const video = currentSlide.querySelector('video');
+
+        if (video) {
+            video.play();
+            video.onended = goToNextSlide; // Move to the next slide when the video ends
+        } else {
+            slideInterval = setTimeout(goToNextSlide, 2000); // Move to the next slide after 5 seconds
+        }
+    }
+
+    // Initialize the carousel
+    carouselItems[currentIndex].classList.add('active');
+    setSlideInterval();
 });
 
 
