@@ -188,6 +188,60 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    var carousel = document.querySelector('#carouselContent');
+    var videos = carousel.querySelectorAll('video');
+    
+    // Pause the carousel when a video starts playing
+    function pauseCarousel() {
+        $(carousel).carousel('pause');
+    }
+
+    // Resume the carousel when the video ends
+    function resumeCarousel() {
+        $(carousel).carousel('cycle');
+    }
+
+    // Play video when it becomes visible
+    function handleVideoSlide(event) {
+        var video = event.relatedTarget.querySelector('video');
+        if (video) {
+            video.currentTime = 0; // Restart video
+            video.play();
+            pauseCarousel();
+            video.onended = function () {
+                resumeCarousel();
+            };
+        } else {
+            // Pause the video if it is not on the current slide
+            videos.forEach(v => v.pause());
+        }
+    }
+
+    // Event listener for when the carousel slide changes
+    $(carousel).on('slide.bs.carousel', handleVideoSlide);
+
+    // Event listener to ensure video plays correctly when navigating back to the slide
+    $(carousel).on('slide.bs.carousel', function () {
+        var activeSlide = $(carousel).find('.carousel-item-active');
+        var video = activeSlide.find('video').get(0);
+        if (video) {
+            video.currentTime = 0; // Restart video if on active slide
+            video.play();
+            pauseCarousel();
+            video.onended = function () {
+                resumeCarousel();
+            };
+        }
+    });
+
+    // Initial setup for carousel pause when video is present
+    videos.forEach(video => {
+        video.addEventListener('play', pauseCarousel);
+        video.addEventListener('ended', resumeCarousel);
+    });
+});
+
 
 
 
